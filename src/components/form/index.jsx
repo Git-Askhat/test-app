@@ -4,11 +4,17 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 export default function Form() {
-  const [inputValues, setInputValues] = useState({
+  const initailValue = {
     name: '',
     email: '',
     message: '',
-  });
+  };
+
+  const [{ name, email, message }, setInputValues] = useState(initailValue);
+
+  function resetValues() {
+    setInputValues({ ...initailValue });
+  }
 
   const handleChange = (e) => {
     setInputValues((values) => ({
@@ -27,14 +33,16 @@ export default function Form() {
   //   }).then(jsonResponse => setInitialState(jsonResponse))
   // }, [])
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await axios.post("/api/feed", inputValues)
-      .then(response => {
-        console.log(response)
-      })
+      await axios
+        .post('data', { name, email, message })
+        .then((response) => {
+          console.log(response);
+        })
+        .then(resetValues);
     } catch (error) {
       console.log(error);
     }
@@ -46,23 +54,25 @@ export default function Form() {
         <Title>Reach out to us!</Title>
         <StyledInput
           name='name'
-          value={inputValues.name}
+          value={name}
           onChange={handleChange}
           placeholder='Your name*'
         />
         <StyledInput
           name='email'
-          value={inputValues.email}
+          value={email}
           onChange={handleChange}
           placeholder='Your e-mail*'
         />
         <InputMessage
           name='message'
-          value={inputValues.message}
+          value={message}
           onChange={handleChange}
           placeholder='Your message*'
         />
-        <SubmitButton type='submit' onSubmit={handleSubmit}>Send message</SubmitButton>
+        <SubmitButton type='submit' onSubmit={handleSubmit}>
+          Send message
+        </SubmitButton>
       </InputForm>
     </FormWrapper>
   );
