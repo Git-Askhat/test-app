@@ -8,7 +8,7 @@ import SvgFacebook from '../../assets/facebook';
 import SvgPinterest from '../../assets/pinterest';
 import SvgLeftBaloon from '../../assets/leftBaloon';
 import SvgUpBaloon from '../../assets/upBaloon';
-import RightBaloon from '../../assets/rightBaloon.svg'
+import RightBaloon from '../../assets/rightBaloon.svg';
 
 export default function Footer() {
   return (
@@ -21,7 +21,7 @@ export default function Footer() {
       </Media>
       <SvgLeftBaloon className='leftBaloon' />
       <SvgUpBaloon className='upBaloon' />
-      <img src={RightBaloon} alt="Baloon" className="rightBaloon"/>
+      <img src={RightBaloon} alt='Baloon' className='rightBaloon' />
     </FooterContainer>
   );
 }
@@ -45,6 +45,12 @@ const FooterContainer = styled.div`
       bottom: -30px;
       left: -30px;
     }
+
+    @media (max-width: 720px) {
+      transform: scale(0.7);
+      bottom: -50px;
+      left: -50px;
+    }
   }
 
   .upBaloon {
@@ -66,6 +72,13 @@ const Media = styled.div`
   display: flex;
   justify-content: space-between;
   z-index: 100;
+
+  @media (max-width: 1000px) {
+    margin-left: 50%;
+  }
+  @media (max-width: 680px) {
+    margin-left: 35%;
+  }
 `;
 
 const DivLeft = styled.div`
