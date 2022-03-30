@@ -60,6 +60,7 @@ export default function Form() {
         />
         <StyledInput
           name='email'
+          type='email'
           value={email}
           onChange={handleChange}
           placeholder='Your e-mail*'
