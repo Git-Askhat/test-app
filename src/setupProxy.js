@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     '/',
     createProxyMiddleware({
-      target: 'https://message-send-app.herokuapp.com',
+      target: 'https://message-send.herokuapp.com',
       changeOrigin: true,
     })
   );
