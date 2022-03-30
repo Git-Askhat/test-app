@@ -38,7 +38,7 @@ export default function Form() {
 
     try {
       await axios
-        .post('data', { name, email, message })
+        .post('https://message-send-app.herokuapp.com/data', { name, email, message })
         .then((response) => {
           console.log(response);
         })
